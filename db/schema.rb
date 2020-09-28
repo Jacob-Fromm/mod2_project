@@ -19,21 +19,21 @@ ActiveRecord::Schema.define(version: 2020_09_27_170351) do
 
   create_table "trips", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "paark_id", null: false
+    t.integer "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["paark_id"], name: "index_trips_on_paark_id"
+    t.index ["park_id"], name: "index_trips_on_park_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "paassword_digest"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "trips", "paarks"
+  add_foreign_key "trips", "parks"
   add_foreign_key "trips", "users"
 end
