@@ -1,4 +1,4 @@
 class Trip < ApplicationRecord
   belongs_to :user
-  belongs_to :paark
+  belongs_to :park
 end
