@@ -57,15 +57,70 @@ class Park < ApplicationRecord
     end
 
 
-    def get_activities(p_code)
+    def get_thingstodo(p_code)
+        
         url = "https://developer.nps.gov/api/v1/thingstodo?parkCode=#{p_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
         json_hash = JSON.parse(resp)
+        activities = []
+        json_hash.each do |data_key, value|
+            if data_key["data"]
+                value.each do |hash_keys|
+                    activities << hash_keys["title"]
+                end
+            end
+        end
+        p activities
+    end
 
 
-        
+
+    def get_events(p_code)
+        url = "https://developer.nps.gov/api/v1/events?parkCode=#{p_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
+        resp = RestClient.get(url)
+        json_hash = JSON.parse(resp)
+        events = []
+        json_hash.each do |data_key, value|
+            if data_key["data"]
+                value.each do |hash_keys|
+                    if hash_keys["title"] != nil 
+                    events << hash_keys["title"]
+                    end
+                end
+            end
+        end
+        if events.any?
+            p events
+        else
+            p "No upcoming or current events happening at this time"
+        end
+    end
+
+
+    def get_alerts(p_code)
+        url = "https://developer.nps.gov/api/v1/alerts?parkCode=#{p_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
+        resp = RestClient.get(url)
+        json_hash = JSON.parse(resp)
+        alerts = []
+        desc = []
+        json_hash.each do |data_key, value|
+            if data_key["data"]
+                value.each do |hash_keys|
+                    if hash_keys["title"]
+                        alerts << hash_keys["title"]
+                    end
+                    
+                    if hash_keys["description"]
+                        desc << hash_keys["description"]
+                        
+                    
+                    end
+                end
+            end
+        end
     
-    
+        p alerts
+        p desc
     
     end
 

@@ -1,6 +1,26 @@
-<h1> Park Data </h1>
-<h3> Here's Data </h3>
+<h1> Park Data Example </h1>
+
+
+<h3> Campgrounds </h3>
 <ul>
-<% @park.get_park_codes.each do |park|%>
-<li> <%= puts park %></li>
+<% @park.get_campgrounds("dena").each do |cg|%>
+<li> <%= cg %></li>
+<%end%>
 </ul>
+<h3> Activities at Park </h3>
+<ul>
+<% @park.get_thingstodo("dena").each do |act|%>
+<li> <%= act%></li>
+<%end%>
+</ul>
+
+<h3> Recent or Upcoming Events </h3>
+<ul>
+<li><%= @park.get_events("dena")%></li>
+</ul>
+<h3> Important Information </h3>
+<ul>
+<li><%= @park.get_alerts("dena") %></li>
+</ul>
+
+<%= button_to %>
