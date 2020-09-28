@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:login, :home, :handle_login, :new, :create]
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def new
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+    user = User.new(user_params(:name, :email, :password))
     user.email = user.email.downcase
     if user.valid?
       user.save
@@ -21,6 +22,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit 
+    @user = User.find(params[:id])
+  end
+
+  def update 
+    @user = User.find(params[:id])
+    @user.update(user_params(:name, :password))
+    if @user.valid?
+      redirect_to home_path
+    else  
+      flash[:message] = user.errors.full_messages
+      redirect_to edit_user_path
+    end
+  end
+
+  def destroy
+    @current_user.destroy
+    redirect_to home_path
+  end
 
   def login
 
@@ -44,8 +64,7 @@ class UsersController < ApplicationController
 
   private 
 
-  def user_params
-    # switch to: permit(args) to limit access to :username
-    params.require(:user).permit(:name, :email, :password)
+  def user_params(*args)
+    params.require(:user).permit(*args)
   end
 end

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :authorized
-  skip_before_action :authorized, only: [:login, :home, :handle_login, :new, :create]
+  helper_method :logged_in?
 
   def home
     @current_user = User.find_by(id: session[:username])
