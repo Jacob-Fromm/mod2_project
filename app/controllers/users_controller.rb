@@ -10,10 +10,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    user.username = user.username.downcase
+    user.email = user.email.downcase
     if user.valid?
       user.save
-      flash[:success] = "#{user.username}"
+      flash[:success] = "#{user.email}"
       redirect_to login_path
     else  
       flash[:message] = user.errors.full_messages
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
   
   def handle_login
-    @user = User.find_by(username: params[:username].downcase)
+    @user = User.find_by(email: params[:email].downcase)
     if @user && @user.authenticate(params[:password])
       session[:username] = @user.id
       redirect_to home_path
@@ -46,6 +46,6 @@ class UsersController < ApplicationController
 
   def user_params
     # switch to: permit(args) to limit access to :username
-    params.require(:user).permit(:name, :username, :password)
+    params.require(:user).permit(:name, :email, :password)
   end
 end

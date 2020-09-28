@@ -8,8 +8,8 @@
   <% end %>
   <ul>
     <%= form_tag '/login' do%>
-      <li> <%= label_tag :username, 'Email' %> </li>
-      <li> <%= text_field_tag :username, flash[:success] %> </li>
+      <li> <%= label_tag :email%> </li>
+      <li> <%= text_field_tag :email, flash[:success] %> </li>
       <li> <%= label_tag :password %> </li>
       <li> <%= password_field_tag :password %> </li>
       <li> <%= submit_tag "log in"%> </li>

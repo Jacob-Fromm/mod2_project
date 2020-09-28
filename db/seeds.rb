@@ -9,5 +9,5 @@
 
 User.destroy_all
 
-zuzu = User.create(name: 'zuzu', username: 'zuzu', password: '222222' )
+zuzu = User.create(name: 'zuzu', email: 'zuzu@me.com', password: '222222' )
 
