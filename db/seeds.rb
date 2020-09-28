@@ -10,12 +10,12 @@ Park.destroy_all
 User.destroy_all
 Trip.destroy_all
 
-10 times do
+(10).times do
     Park.create
 end
 
 names = ['bill', 'karen', 'sally', 'dave', 'biff', 'glinda']
 usernames = ['gmoney', 'camperperson', 'iluvoutdoors','adironackjack']
-10 times do
+(10).times do
     User.create(name: names.sample, username: usernames.sample)
 end
