@@ -1,0 +1,9 @@
+<h1>Home</h1>
+<% if @current_user %>
+<h2>Welcome
+<%= @current_user.name %> 
+</h2>
+<%= button_to "log out", "/logout", method: :delete %>
+<% else %>
+<%= link_to 'login', login_path %>
+<% end %>
