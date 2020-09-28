@@ -1,3 +1,6 @@
 <h1> Park Data </h1>
-
-<%= @park.park_data%>
+<h3> Here's Data </h3>
+<ul>
+<% @park.get_park_codes.each do |park|%>
+<li> <%= puts park %></li>
+</ul>
