@@ -32,8 +32,12 @@ class TripsController < ApplicationController
         end
     end
     
-    def delete
+    def destroy
         if @current_user.valid?
+            @trip = @current_user.trips.find(params[:id])
+            @trip.destroy
+            redirect_to home_path
+        end
             
     
     end

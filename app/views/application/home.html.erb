@@ -13,7 +13,7 @@
 <% @current_user.trips.each do |trip|%> 
 <%= trip.park.park_name %>
 <li><%= link_to "Update Your Trip Information", edit_trip_path(trip)%></li>
-<li><%= button_to "Cancel your Trip", %>
+<%= button_to "Cancel Your Trip", trip_path(trip), method: :delete, data: { confirm: 'Are you sure you want to cancel? Notice: You may be subject to a cancellation fee.' }%>
 <br>
  <%end%>
  <br><br>
