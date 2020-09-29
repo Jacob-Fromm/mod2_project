@@ -1,29 +1,13 @@
-require "rubygems"
-require "httparty"
-
-class NPS
-    include HTTParty
-    base_uri "https://jonahtaylor-national-park-service-v1.p.rapidapi.com/"
-
+require 'pry'
+require 'rest-client'
+require 'json'
+class Parks
     def parks
-        self.class.get("/parks")
+        response = RestClient.get("https://developer.nps.gov/api/v1/parks?&api_key=Kt4mt3BWhB06mkfBRFiOZdb6A3DUwH0CcKORnguX")
+        
+        json = JSON.parse(response)
+        parks = json["data"]
     end
-
-    all_parks = NPS.new
-    puts all_parks.parks
-    
-    # url = URI("https://jonahtaylor-national-park-service-v1.p.rapidapi.com/parks")
-
-    # http = Net::HTTP.new(url.host, url.port)
-    # http.use_ssl = true
-    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    # request = Net::HTTP::Get.new(url)
-    # request["x-api-key"] = 'e1pgCWYc3nsrAOY3HnhZGQ75nuJffj4gyrsQjAD5'
-    # request["x-rapidapi-host"] = 'jonahtaylor-national-park-service-v1.p.rapidapi.com'
-    # request["x-rapidapi-key"] = '8afd7ffa98msh66c5e14a405f912p133da5jsne6eb4d751d16'
-
-    # response = http.request(request)
-    # puts response.read_body
-
 end
+
+parks

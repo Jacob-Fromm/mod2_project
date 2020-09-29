@@ -5,28 +5,36 @@ require 'openssl'
 class ParksController < ApplicationController
 
     def index
-        @parks = self.class.all_parks
+       @tag = query.fetch(:tags, "all")
+       @parks, @errors = NPS::NationalPark.random(query)
+    end
+
+    def show
+        @park = NPS::NationalPark.find(params[park_code])
     end
     
-    def all_parks
-        request_api(URI("https://jonahtaylor-national-park-service-v1.p.rapidapi.com/parks"))
-    end
     
     private
 
-    
-    def request_api(url)
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-        request = Net::HTTP::Get.new(url)
-        request["x-api-key"] = 'e1pgCWYc3nsrAOY3HnhZGQ75nuJffj4gyrsQjAD5'
-        request["x-rapidapi-host"] = 'jonahtaylor-national-park-service-v1.p.rapidapi.com'
-        request["x-rapidapi-key"] = '8afd7ffa98msh66c5e14a405f912p133da5jsne6eb4d751d16'
-
-        response = http.request(request)
+    def query
+        params.fetch(:query, {})
     end
+
+    # def park_params
+    #     params.require(:parks).permit!
+    # end
+
+    # def find_park
+
+    # end
+    
+   
+    # def parks
+    #     response = RestClient.get("https://developer.nps.gov/api/v1/parks?&api_key=Kt4mt3BWhB06mkfBRFiOZdb6A3DUwH0CcKORnguX")
+    #     json = JSON.parse(response)
+
+    #     @parks = json["data"]
+    # end
         
     
 

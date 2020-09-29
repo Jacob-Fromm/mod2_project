@@ -13,6 +13,28 @@
 ActiveRecord::Schema.define(version: 2020_09_27_170351) do
 
   create_table "parks", force: :cascade do |t|
+    t.string "url"
+    t.string "fullName"
+    t.string "park_id"
+    t.string "parkCode"
+    t.text "description"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "latLong"
+    t.string "acitivites"
+    t.string "topics"
+    t.string "states"
+    t.string "contacts"
+    t.string "entranceFees"
+    t.string "entrancePasses"
+    t.text "directionsInfo"
+    t.string "directionsURL"
+    t.string "operatingHours"
+    t.string "addresses"
+    t.string "images"
+    t.string "weatherInfo"
+    t.string "name"
+    t.string "designation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

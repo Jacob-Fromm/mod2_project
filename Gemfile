@@ -58,3 +58,7 @@ gem 'excon'
 gem 'httparty'
 gem 'dotenv-rails'
 gem 'faraday'
+gem "pry"
+gem 'rest-client', '~> 2.1'
+gem "pry-byebug"
+gem 'pry-stack_explorer', '~> 0.5.0'
