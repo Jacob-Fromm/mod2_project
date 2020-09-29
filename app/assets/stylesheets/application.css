@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    background: url(../assets/zion.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-attachment: scroll; */
+    background-size: cover;
+}
+
+h1 {
+  color: #FF6600;
+}
+
+.btn {
+  background-color: #FF8533;
+  min-width: 100px;
+}
+.btn:hover {
+  background-color: #FF6600;
+}
+
+.width-50 {
+  width: 50%;
+  min-width: 180px;
+}
+
+input {
+  outline-color: #FF9D44; 
+}
+
+a:hover {
+  color: #FFD67A !important;
+}
