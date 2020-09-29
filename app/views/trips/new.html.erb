@@ -1,0 +1,8 @@
+<h1> Book A Site Through Us! </h1>
+
+<%= form_for @trip do |f|%>
+<%= f.label :park_id %>
+<%= f.collection_select :park_id, Park.all, :id, :park_name%>
+<%=f.submit%>
+
+<%end%>
