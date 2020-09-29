@@ -1,6 +1,12 @@
 <h1>Login</h1>
 
 <div>
+<% if flash[:user_error]%>
+    <%= flash[:user_error]%>
+    <%end%>
+</div>
+
+<div>
   <% if flash[:message] %>
     <p> <%= flash[:message] %> </p>
     <% elsif flash[:success] %>
@@ -15,5 +21,5 @@
       <li> <%= submit_tag "log in"%> </li>
     <% end %>
   </ul>
-
+    <%= link_to "Not a User? Sign up Here!", new_user_path%>
 </div>

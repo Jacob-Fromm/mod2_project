@@ -38,12 +38,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @current_user.destroy
+    @current_user = nil
+    # @current_user.destroy
     redirect_to home_path
   end
 
   def login
-
+    #
   end
   
   def handle_login

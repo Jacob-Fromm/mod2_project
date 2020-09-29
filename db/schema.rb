@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_130628) do
+ActiveRecord::Schema.define(version: 2020_09_29_165320) do
 
   create_table "parks", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2020_09_29_130628) do
     t.integer "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "trip_start_date"
+    t.string "trip_end_date"
     t.index ["park_id"], name: "index_trips_on_park_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
@@ -34,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_130628) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   add_foreign_key "trips", "parks"

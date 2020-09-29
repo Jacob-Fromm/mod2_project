@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_many :trips
     has_many :parks, through: :trips
     validates :name, presence: true
-    validates :email, email: true
+    validates :email, presence: true
 
   # password confirmation
   # validates :password, confirmation: true

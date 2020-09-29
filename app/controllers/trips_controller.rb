@@ -1,19 +1,42 @@
 class TripsController < ApplicationController
     def show
+        @trip = Trip.find(params[:id])
     end
 
     def new
+        if @current_user.valid?
+            @trip = Trip.new(user_id: @current_user)
+        else 
+            flash[:user_error] = "You are not logged in! You must be logged in to your account in order to book a trip!"
+            redirect_to login_user_path
+        end
     end
 
     def create
+        if @current_user.valid?
+            @trip = @current_user.trips.create(trip_params)
+            redirect_to home_path
+        end
+
     end
 
     def edit
+        @trip = Trip.find(params[:id])
+
     end
 
     def update
+        if @current_user.valid?
+            @trip = @current_user.trips.update(trip_params)
+            redirect_to home_path
+        end
     end
     
+    def delete
+        if @current_user.valid?
+            
+    
+    end
     private
 
     def trip_params
