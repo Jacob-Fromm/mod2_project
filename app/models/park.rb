@@ -30,7 +30,7 @@ class Park < ApplicationRecord
 
 
     def get_campgrounds
-        self.park_code = Park.find(park_code: params[:park_code])
+        
         url = "https://developer.nps.gov/api/v1/campgrounds?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
         json_hash = JSON.parse(resp)
@@ -42,7 +42,7 @@ class Park < ApplicationRecord
                     
                     if hash_keys["operatingHours"]
                         hash_keys["operatingHours"].each do |key|
-                            # binding.pry
+                            
                             if key["name"]
                             campgrounds << key["name"]
                             end
@@ -58,8 +58,8 @@ class Park < ApplicationRecord
     end
 
 
-    def get_thingstodo(p_code)
-        self.park_code = Park.find(park_code: params[p_code])
+    def get_thingstodo
+        
         
         url = "https://developer.nps.gov/api/v1/thingstodo?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
@@ -78,7 +78,7 @@ class Park < ApplicationRecord
 
 
     def get_events
-        self.park_code = Park.find(park_code: params[:park_code])
+        
         url = "https://developer.nps.gov/api/v1/events?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
         json_hash = JSON.parse(resp)
@@ -101,7 +101,7 @@ class Park < ApplicationRecord
 
 
     def get_alerts
-        self.park_code = Park.find(park_code: params[:park_code])
+        
         url = "https://developer.nps.gov/api/v1/alerts?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
         json_hash = JSON.parse(resp)
