@@ -29,8 +29,9 @@ class Park < ApplicationRecord
     end
 
 
-    def get_campgrounds(p_code)
-        url = "https://developer.nps.gov/api/v1/campgrounds?parkCode=#{p_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
+    def get_campgrounds
+        self.park_code = Park.find(park_code: params[:park_code])
+        url = "https://developer.nps.gov/api/v1/campgrounds?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
         json_hash = JSON.parse(resp)
         campgrounds = []
@@ -58,8 +59,9 @@ class Park < ApplicationRecord
 
 
     def get_thingstodo(p_code)
+        self.park_code = Park.find(park_code: params[p_code])
         
-        url = "https://developer.nps.gov/api/v1/thingstodo?parkCode=#{p_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
+        url = "https://developer.nps.gov/api/v1/thingstodo?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
         json_hash = JSON.parse(resp)
         activities = []
@@ -75,8 +77,9 @@ class Park < ApplicationRecord
 
 
 
-    def get_events(p_code)
-        url = "https://developer.nps.gov/api/v1/events?parkCode=#{p_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
+    def get_events
+        self.park_code = Park.find(park_code: params[:park_code])
+        url = "https://developer.nps.gov/api/v1/events?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
         json_hash = JSON.parse(resp)
         events = []
@@ -97,8 +100,9 @@ class Park < ApplicationRecord
     end
 
 
-    def get_alerts(p_code)
-        url = "https://developer.nps.gov/api/v1/alerts?parkCode=#{p_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
+    def get_alerts
+        self.park_code = Park.find(park_code: params[:park_code])
+        url = "https://developer.nps.gov/api/v1/alerts?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
         resp = RestClient.get(url)
         json_hash = JSON.parse(resp)
         alerts = []
