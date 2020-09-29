@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:login, :home, :handle_login, :new, :create]
+
+  skip_before_action :authorized, only: [:login, :home, :handle_login, :new, :create]
 
   def show
     @user = User.find(params[:id])
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    #
+
   end
   
   def handle_login

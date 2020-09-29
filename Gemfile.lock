@@ -81,8 +81,13 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+
+    email_validator (2.0.1)
+      activemodel
+
     erubi (1.9.0)
     excon (0.76.0)
     execjs (2.7.0)
@@ -230,6 +235,7 @@ DEPENDENCIES
   bootstrap (~> 5.0.0.alpha1)
   byebug
   capybara (>= 2.15)
+  email_validator
   excon
   jbuilder (~> 2.7)
   listen (~> 3.2)

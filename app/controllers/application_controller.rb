@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-    before_action :authorized
-    helper_method :logged_in?
+
+  before_action :authorized
+  helper_method :logged_in?
 
   def home
     @current_user = User.find_by(id: session[:username])
@@ -16,6 +17,7 @@ class ApplicationController < ActionController::Base
 
   def authorized
     redirect_to '/login' unless logged_in?
+    redirect_to login_path unless logged_in?
   end
 
 end

@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rest-client'
 
+# Use User Model validates email format
+gem 'email_validator' 
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
