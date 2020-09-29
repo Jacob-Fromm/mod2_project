@@ -6,6 +6,7 @@ class Park < ApplicationRecord
      has_many :users, through: :trips
 
      # can get around limitations by getting limit 1-100, 2-200
+     # self.park_code = Park.find(park_code: params[:park_code])
 
     def get_park_codes
         url = "https://developer.nps.gov/api/v1/campgrounds?limit=100&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
@@ -52,8 +53,11 @@ class Park < ApplicationRecord
                 end
             end
         end
-        
-        p campgrounds
+        if campgrounds.any?
+            p campgrounds
+        else
+            puts "There are no campgrounds at this site"
+        end
 
     end
 

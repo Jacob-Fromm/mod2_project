@@ -1,0 +1,8 @@
+<h1>Show User</h1>
+
+<ul>
+  <li> Name: <%= @user.name %> </li>
+  <li> Email: <%= @user.email %> </li>
+  <li> <%= link_to 'update your information', edit_user_path(@current_user) %> </li>
+  <li> <%= button_to 'delete account','/users/:id', method: :delete %> </li>
+</ul>
