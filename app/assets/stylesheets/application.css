@@ -22,10 +22,24 @@ body {
     background-size: cover;
 }
 
-h1 {
+h1, .fa-user-circle {
   color: #FF6600;
 }
 
+.user-top-r h3, .user-top-r form {
+  display: inline-block;
+}
+.fa-user-circle {
+  font-size: 1.75em;
+}
+.user-top-r h3 {
+  font-size: 1.25em;
+  color: #FF6600;
+  padding: 6px;
+}
+.user-top-r input {
+  min-width: 50px;
+}
 .btn {
   background-color: #FF8533;
   min-width: 100px;
