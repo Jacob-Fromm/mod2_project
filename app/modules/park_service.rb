@@ -37,6 +37,10 @@ module ParkService
     request("alerts?parkCode=#{parkCode}")
   end
 
+  def park_news(parkCode)
+    request("newsreleases?parkCode=#{parkCode}")
+  end
+
 
 
 

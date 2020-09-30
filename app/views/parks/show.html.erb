@@ -10,6 +10,12 @@
     </ul>
 <% end %>
 
+<h2>News Releases</h2>
+<%= @park_news.each do |news| %>
+    <h3><a href=<%= news["url"]%>><%= news["title"] %></a></h3>
+    <p><%= news["abstract"] %></p>
+    <img src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
+<% end %>
 <h2>Amenities</h2>
 <% @park_amenities.each do |amen| %>
     <ul>
