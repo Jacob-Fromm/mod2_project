@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
             park_code = @client.parks.each.select {|park| park["fullName"] == params["fullName"]}[0]["parkCode"]
             @park = @client.park(park_code)[0]
         else
-            flash[:error] = "Please enter a valid park"
+            flash[:error] = "Please enter a valid park name"
             render :new
         end
         
