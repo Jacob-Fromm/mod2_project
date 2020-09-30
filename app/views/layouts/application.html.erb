@@ -12,11 +12,14 @@
 
   <body>
     <header class="navbar navbar-expand-large bg-white">
-      <h1 class="m-1">ParkPlanner</h1>
+      <img src="/assets/pp-vector.png" alt="logo" class="logo">
+      <h1 class="m-1"> <%= link_to 'ParkPlanner', home_path, class: "h1" %> </h1>
       <div class="user-top-r container">
         <% if @current_user %>
+        <a href= "<%=edit_user_path(@current_user)%>">
           <i class="fas fa-user-circle"></i>
           <h3 class="mt-2 mb-2"> <%= @current_user.name %> </h3>
+        </a>
           <%= button_to "log out", "/logout", method: :delete, class: "btn btn-primary border-0 mt-2 mb-2" %>
         <% else %>
           <%= link_to 'login', login_path, class: "btn btn-primary border-0 mt-2 mb-2" %>
