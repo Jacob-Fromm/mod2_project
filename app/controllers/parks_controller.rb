@@ -13,6 +13,11 @@ class ParksController < ApplicationController
     
     def show
         @park = Park.find(params[:id])
+        if @client.parks.find {|park| park["fullName"] == @park.park_name}
+            park_code = @client.parks.each.select {|park| park["fullName"] == @park.park_name}[0]["parkCode"]
+            @park_api = @client.park(park_code)[0]
+        end
+    
     end
 
     private
@@ -20,8 +25,5 @@ class ParksController < ApplicationController
     def set_params
         params.require(:park).permit!
     end
-
-
-
 end
 
