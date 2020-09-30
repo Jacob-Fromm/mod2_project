@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    before_save { self.email = email.downcase}
 
     has_many :trips
     has_many :parks, through: :trips
