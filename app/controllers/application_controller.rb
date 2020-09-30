@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-#   before_action :authorized
-#   helper_method :logged_in?
+  before_action :authorized
+  helper_method :logged_in?
 
     # include NPS
     # before_action :client
@@ -9,17 +9,17 @@ class ApplicationController < ActionController::Base
     #     @client ||= NPS::Client.new
     # end
 
-#   def home
-#     @current_user = User.find_by(id: session[:username])
-#   end
+  def home
+    @current_user = User.find_by(id: session[:username])
+  end
 
-#   def set_current_user
-#     @current_user = User.find_by(id: session[:username])
-#   end
+  def set_current_user
+    @current_user = User.find_by(id: session[:username])
+  end
 
-#   def logged_in?
-#     !!set_current_user
-#   end
+  def logged_in?
+    !!set_current_user
+  end
 
 
 

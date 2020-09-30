@@ -1,9 +1,10 @@
-<h1>Show User</h1>
 
+<h2 class="text-white mt-2 mb-4">Profile</h2>
 <ul>
-  <li> Name: <%= @user.name %> </li>
-  <li> Email: <%= @user.email %> </li>
-  <li> <%= link_to 'update your information', edit_user_path(@current_user) %> </li>
-  <li> <%= button_to 'delete account','/users/:id', method: :delete %> </li>
+  <li class="text-white mt-2 mb-2"> Name: <%= @user.name %> </li>
+  <li class="text-white mt-2 mb-2"> Email: <%= @user.email %> </li>
+  <li class="text-white mt-2 mb-2"> Password: ****** </li>
+  <li class="text-white mt-2 mb-2"> <%= link_to 'update your information', edit_user_path(@current_user), class:"text-white" %> </li>
+  <li> <%= button_to 'delete account','/users/:id', method: :delete, class: "btn btn-primary border-white mt-4 mb-3" %> </li>
 </ul>
 
