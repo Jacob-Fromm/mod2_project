@@ -7,8 +7,7 @@ class ParksController < ApplicationController
     end
     
     def index
-        @parks = @client.parks 
-
+        @parks = @client.parks
     end
 
     def new

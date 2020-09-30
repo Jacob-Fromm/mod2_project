@@ -2,8 +2,6 @@
 
 <% @parks.map do |park| %>
     <ul>
-        <li> <%= park["fullName"] %></li>
+        <li><%= park["fullName"] %></li> 
     </ul>
-    <p><%= park["description"] %></p>
-   
 <% end %>
