@@ -5,13 +5,23 @@
 <br>
 <img src=<%= @park_api["images"][0]["url"]%> alt=<%= @park_api["images"][0]["altText"]%>>
 
-<h2>Hours of Operation</h2>
-<p><%=  @park_api["operatingHours"][0]["exceptions"][0]["name"] %></p>
-<p>As of: <%= @park_api["operatingHours"][0]["exceptions"][0]["startDate"] %></p>
-<% @park_api["operatingHours"][0]["exceptions"][0]["exceptionHours"].each do |day, hours| %>
-   <p><%= "#{day.capitalize}: #{hours}" %></p> 
+
+<% if @park_api["operatingHours"][0]["exceptions"][0] %>
+    <h2>Hours of Operation</h2>
+    <p><%=  @park_api["operatingHours"][0]["exceptions"][0]["name"] %></p>
+    <p>As of: <%= @park_api["operatingHours"][0]["exceptions"][0]["startDate"] %></p>
+    <% @park_api["operatingHours"][0]["exceptions"][0]["exceptionHours"].each do |day, hours| %>
+    <p><%= "#{day.capitalize}: #{hours}" %></p> 
+    <% end %>
+    <p>Typical operating hours: <%= @park_api["operatingHours"][0]["description"] %></p>
+<% else %>
+    <h2>Hours of Operation</h2>
+    <p> <%= @park_api["operatingHours"][0]["description"] %></p>
 <% end %>
-<p>Typical operating hours: <%= @park_api["operatingHours"][0]["description"] %></p>
+
+
+<h2>Weather Info</h2>
+<%= @park_api["weatherInfo"] %>
 
 <h2>Alerts</h2>
 <% @park_alerts.each do |alert| %>
@@ -54,6 +64,7 @@
     </ul>
 <% end %>
 <a href=<%= @park_api["url"] %>>See park website for more details.</a>
+
 
 
 
