@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :trips
   resources :parks
+  get '/search', to: 'searches#new'
+  post '/search', to: 'searches#show'
   # resources :users
 
 

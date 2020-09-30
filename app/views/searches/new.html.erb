@@ -1,0 +1,7 @@
+<h1>Welcome to the Natoinal Park Service Searcher!</h1>
+<h3>Please enter a request by park name</h3>
+<%= form_tag("/search", method: "post") do %>
+  <%= label_tag(:fullName, "") %>
+  <%= text_field_tag(:fullName) %>
+  <%= submit_tag("Search") %>
+<% end %>

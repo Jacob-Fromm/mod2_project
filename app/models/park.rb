@@ -1,3 +1,3 @@
 class Park < ApplicationRecord
-    include Client
+    include ParkService
 end

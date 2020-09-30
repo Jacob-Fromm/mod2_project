@@ -2,7 +2,8 @@ module ParkService
   class Client
     
   
-	
+	@@parks = []
+
 	def request(endpoint)
 		uri = URI.parse("https://developer.nps.gov/api/v1/#{endpoint}")
 		request = Net::HTTP::Get.new(uri)
@@ -23,6 +24,12 @@ module ParkService
 	def parks
 		request("parks?")
 	end
+
+	def park(parkCode)
+		request("parks?parkCode=#{parkCode}")
+	end
+
+
 
 
 
