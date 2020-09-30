@@ -3,6 +3,14 @@
 <h2><%= @park_api["fullName"]%></h2>
 <a href=<%= @park_api["url"]%>><%=@park_api["fullName"] %>Website</a>
 
+<h2>Hours of Operation</h2>
+<p><%=  @park_api["operatingHours"][0]["exceptions"][0]["name"] %></p>
+<p>As of: <%= @park_api["operatingHours"][0]["exceptions"][0]["startDate"] %></p>
+<% @park_api["operatingHours"][0]["exceptions"][0]["exceptionHours"].each do |day, hours| %>
+   <p><%= "#{day.capitalize}: #{hours}" %></p> 
+<% end %>
+<p>Typical operating hours: <%= @park_api["operatingHours"][0]["description"] %></p>
+
 <h2>Alerts</h2>
 <% @park_alerts.each do |alert| %>
     <ul>
@@ -10,12 +18,23 @@
     </ul>
 <% end %>
 
+<h2>Fees</h2>
+<% @park_api["entranceFees"].each do |fee|%>
+   <ul>
+        <li><%= fee["title"] %></li>
+        <ul>
+            <li>$<%= fee["cost"] %></li>
+        </ul>
+   </ul> 
+<% end %>
+
 <h2>News Releases</h2>
-<%= @park_news.each do |news| %>
+<% @park_news.each do |news| %>
     <h3><a href=<%= news["url"]%>><%= news["title"] %></a></h3>
     <p><%= news["abstract"] %></p>
     <img src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
 <% end %>
+
 <h2>Amenities</h2>
 <% @park_amenities.each do |amen| %>
     <ul>
