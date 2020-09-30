@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   skip_before_action :authorized, only: [:login, :home, :handle_login, :new, :create]
 
   def show
@@ -38,7 +39,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @current_user.destroy
+    @current_user = nil
+    # @current_user.destroy
     redirect_to home_path
   end
 

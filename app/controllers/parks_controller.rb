@@ -1,4 +1,5 @@
 class ParksController < ApplicationController
+
     include ParkService
     before_action :client
     
@@ -6,17 +7,17 @@ class ParksController < ApplicationController
         @client ||= ParkService::Client.new
     end
     
-    def index
-        @parks = @client.parks
-    end
+#     def index
+#         @parks = @client.parks
+#     end
 
     def new
 
     end
 
-    def show
+#     def show
        
-    end
+#     end
 
     private
 
@@ -26,5 +27,19 @@ class ParksController < ApplicationController
     def set_params
         params.require(:park).permit!
     end
+
+    
+    def index
+        @parks = Park.all
+    end
+    
+    def show
+        @park = Park.find(params[:id])
+    end
+
+    
+
+
+
 end
 
