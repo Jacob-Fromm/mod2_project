@@ -7,27 +7,6 @@ class ParksController < ApplicationController
         @client ||= ParkService::Client.new
     end
     
-#     def index
-#         @parks = @client.parks
-#     end
-
-    def new
-
-    end
-
-#     def show
-       
-#     end
-
-    private
-
-   
-
-    def set_params
-        params.require(:park).permit!
-    end
-
-    
     def index
         @parks = Park.all
     end
@@ -36,7 +15,11 @@ class ParksController < ApplicationController
         @park = Park.find(params[:id])
     end
 
-    
+    private
+
+    def set_params
+        params.require(:park).permit!
+    end
 
 
 
