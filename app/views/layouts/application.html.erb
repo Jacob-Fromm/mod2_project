@@ -6,12 +6,22 @@
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/178350b483.js" crossorigin="anonymous"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header class="navbar navbar-expand-large bg-white">
-      <h1>ParkPicker</h1>
+      <h1 class="m-1">ParkPlanner</h1>
+      <div class="user-top-r container">
+        <% if @current_user %>
+          <i class="fas fa-user-circle"></i>
+          <h3 class="mt-2 mb-2"> <%= @current_user.name %> </h3>
+          <%= button_to "log out", "/logout", method: :delete, class: "btn btn-primary border-0 mt-2 mb-2" %>
+        <% else %>
+          <%= link_to 'login', login_path, class: "btn btn-primary border-0 mt-2 mb-2" %>
+        <% end %>
+      </div> 
     </header>
     <div class='container'>
       <%= yield %>

@@ -5,12 +5,12 @@
 <% end %>
 <ul>
   <%= form_for @user do |f| %>
-    <li> <%= f.label :name %>
-    <%= f.text_field :name %> </li>
-    <li> <%= f.label :email%>
-    <%= f.text_field :email %> </li>
-    <li> <%= f.label :password %>
-    <%= f.password_field :password %> </li>
-    <li> <%= f.submit %> </li>
+    <li> <%= f.label :name, nil, class:'text-white mt-2 mb-2' %>
+    <%= f.text_field :name, class: "input-group border-white width-50 mt-2 mb-2" %> </li>
+    <li> <%= f.label :email, nil, class:'text-white mt-2 mb-2'%>
+    <%= f.text_field :email, class: "input-group border-white width-50 mt-2 mb-2" %> </li>
+    <li> <%= f.label :password, nil, class:'text-white mt-2 mb-2' %>
+    <%= f.password_field :password, class: "input-group border-white width-50 mt-2 mb-2" %> </li>
+    <li> <%= f.submit class: "btn btn-primary border-white mt-4 mb-3"%> </li>
   <% end %>
 </ul>
