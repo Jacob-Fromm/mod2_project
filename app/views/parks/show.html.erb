@@ -1,6 +1,24 @@
 <h1> Park Data Example </h1>
 
 <h2><%= @park_api["fullName"]%></h2>
+<a href=<%= @park_api["url"]%>><%=@park_api["fullName"] %>Website</a>
+
+<h2>Alerts</h2>
+<% @park_alerts.each do |alert| %>
+    <ul>
+        <li><a href=<%= alert["url"]%>><%= alert["title"] %></a></li>
+    </ul>
+<% end %>
+
+<h2>Amenities</h2>
+<% @park_amenities.each do |amen| %>
+    <ul>
+        <li><%= amen[0]["name"] %></li>
+    </ul>
+<% end %>
+<a href=<%= @park_api["url"] %>>See park website for more details.</a>
+
+
 
 
 
