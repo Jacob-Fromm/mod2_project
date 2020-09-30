@@ -2,6 +2,9 @@ require 'rest-client'
 require 'json'
 
 class Park < ApplicationRecord
+
+#     include ParkService
+
      has_many :trips
      has_many :users, through: :trips
 
@@ -134,4 +137,5 @@ class Park < ApplicationRecord
 
 
     
+
 end

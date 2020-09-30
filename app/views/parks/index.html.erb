@@ -1,13 +1,10 @@
-<h1> List of National Parks with Campsites </h1>
 
-<ul>
-    <% @parks.each do |park|%>
-    <li><%=park.park_name%></li>
+<h1>Parks</h1> 
+
+<% @parks.map do |park| %>
     <ul>
-    <li><%= park.park_code%></li>
+        <li><%= park["fullName"] %></li> 
     </ul>
-    <li><%= link_to "Park Page", park_path(park.id)%></li>
-    <br><br>
-    <%end%>
-</ul>
+<% end %>
+
 
