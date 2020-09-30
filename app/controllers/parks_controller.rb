@@ -21,8 +21,7 @@ class ParksController < ApplicationController
 
     private
 
-    def park_code
-    end
+   
 
     def set_params
         params.require(:park).permit!
