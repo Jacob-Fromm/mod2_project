@@ -1,7 +1,35 @@
 <h1> Park Data Example </h1>
 
-<h2><%= @park_api["fullName"]%></h2>
+<h2> Description </h2>
+<b><%= @park_api["fullName"]%></b>
+    <ul>
+<li> <%= @park_api["description"]%> </li>
+    </ul>
+
+<h2> Contact Info </h2>
+    
+    <%@park_api["contacts"].each do |index|%>
+    <%index.each do |address|%>
+    
+    <p><%=address[0]["emailAddress"]%></p>
+    
+    <%end%>
+    <%end%>
+    <%@park_api["contacts"].each do |index|%>
+    <%index.each do |number| %>
+        
+    <p><%=number[0]["phoneNumber"]%></p>
+        
+    <%end%>
+    <%end%>
+    
 
 
+<h2>Amenities</h2>
+<% @park_amenities.each do |amen| %>
+    <ul>
+        <li><%= amen %></li>
+    </ul>
+<% end %>
 
 

@@ -7,8 +7,8 @@ class SearchesController < ApplicationController
     end
 
     def show
-        if @client.parks.find {|park| park["fullName"] == params[:park_name]}
-            park_code = @client.parks.each.select {|park| park["fullName"] == params[:park_code]}[0]["parkCode"]
+        if @client.parks.find {|park| park["fullName"] == params["fullName"]}
+            park_code = @client.parks.each.select {|park| park["fullName"] == params["fullName"]}[0]["parkCode"]
             @park = @client.park(park_code)[0]
         else
             flash[:error] = "Please enter a valid park name"
