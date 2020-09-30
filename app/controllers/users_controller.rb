@@ -11,10 +11,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params(:name, :email, :password))
-    user.email = user.email.downcase
+    user = User.create(user_params(:name, :email, :password))
+    # user.email = user.email.downcase
     if user.valid?
-      user.save
+      # user.save
       flash[:success] = "#{user.email}"
       redirect_to login_path
     else  
