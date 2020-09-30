@@ -1,7 +1,9 @@
 <h1> Park Data Example </h1>
 
 <h2><%= @park_api["fullName"]%></h2>
-<a href=<%= @park_api["url"]%>><%=@park_api["fullName"] %>Website</a>
+<a href=<%= @park_api["url"]%>><%=@park_api["fullName"] %> Website</a>
+<br>
+<img src=<%= @park_api["images"][0]["url"]%> alt=<%= @park_api["images"][0]["altText"]%>>
 
 <h2>Hours of Operation</h2>
 <p><%=  @park_api["operatingHours"][0]["exceptions"][0]["name"] %></p>
@@ -20,6 +22,16 @@
 
 <h2>Fees</h2>
 <% @park_api["entranceFees"].each do |fee|%>
+   <ul>
+        <li><%= fee["title"] %></li>
+        <ul>
+            <li>$<%= fee["cost"] %></li>
+        </ul>
+   </ul> 
+<% end %>
+
+<h2>Passes</h2>
+<% @park_api["entrancePasses"].each do |fee|%>
    <ul>
         <li><%= fee["title"] %></li>
         <ul>
