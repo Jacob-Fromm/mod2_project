@@ -28,6 +28,9 @@
     background-repeat: no-repeat;
     /* background-attachment: scroll; */
     background-size: cover;
+    position: relative;
+    top: 10vh;
+    padding: 5%;
 }
 
 .logo {
@@ -40,13 +43,9 @@ header {
   height: 10vh;
   position: fixed !important;
   display: grid !important;
-  grid-template-columns: 5% 70% 25%;
+  grid-template-columns: 10% 40% 20% 30%;;
   justify-content: center;
   align-items: center;
-  
-
-  
-
 }
 
 .logo, .h1, .user-top-r {
@@ -63,20 +62,35 @@ h1, .fa-user-circle, .h1 {
   color: #FF8228 !important;
 }
 
+.user-top-r {
+  grid-column: 4/4;
+  display: flex;
+}
+.user-top-r a {
+  flex: 50%;
+  display: flex;
+}
+.user-top-r form {
+  flex: 50%;
+}
+
 .user-top-r h3, .user-top-r form {
   display: inline-block;
 }
 .fa-user-circle {
   font-size: 1.75em;
+  flex: 33%;
+  align-self: center;
 }
 .user-top-r h3 {
+  
   font-size: 1.25em;
   color: #FF6600;
   padding: 6px;
+  flex: 66%;
 }
 .user-top-r input {
   min-width: 50px;
-  
 }
 .btn {
   background-color: #FF8533;
