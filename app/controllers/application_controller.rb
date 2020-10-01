@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
     # include NPS
     # before_action :client
     
-    def client
-         @client ||= NPS::Client.new
-     end
+  def client
+    @client ||= NPS::Client.new
+  end
 
   def home
     @current_user = User.find_by(id: session[:username])

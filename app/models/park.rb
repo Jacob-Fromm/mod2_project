@@ -11,26 +11,7 @@ class Park < ApplicationRecord
      # can get around limitations by getting limit 1-100, 2-200
      # self.park_code = Park.find(park_code: params[:park_code])
 
-    def get_park_codes
-        url = "https://developer.nps.gov/api/v1/campgrounds?limit=100&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
-        resp = RestClient.get(url)
-        json_hash = JSON.parse(resp)
     
-    
-        park_codes_array = []
-        json_hash.each do |data_key, value|
-            if data_key["data"]
-            value.each do |hash_keys|
-            park_codes_array << hash_keys["parkCode"]
-            park_codes_array.uniq!
-            end
-            
-        end
-        end
-
-        park_codes_array
-        
-    end
 
 
     def get_campgrounds
@@ -57,11 +38,11 @@ class Park < ApplicationRecord
             end
         end
         if campgrounds.any?
-            p campgrounds
+            campgrounds
         else
-            puts "There are no campgrounds at this site"
+            campgrounds << "There are no campgrounds at this site"
         end
-
+        campgrounds
     end
 
 
@@ -78,8 +59,12 @@ class Park < ApplicationRecord
                     activities << hash_keys["title"]
                 end
             end
+            if activities.any?
+                activities
+            else
+                activities << "No featured activities at this time"
         end
-        p activities
+        activities
     end
 
 
@@ -100,40 +85,15 @@ class Park < ApplicationRecord
             end
         end
         if events.any?
-            p events
+            events
         else
-            p "No upcoming or current events happening at this time"
+            events << "No upcoming or current events happening at this time"
         end
+        events
     end
 
 
-    def get_alerts
-        
-        url = "https://developer.nps.gov/api/v1/alerts?parkCode=#{self.park_code}&api_key=GhGhpL8DrRdsEAwfu0Mn4gXuhgkdnhVnrEnNfmRx"
-        resp = RestClient.get(url)
-        json_hash = JSON.parse(resp)
-        alerts = []
-        desc = []
-        json_hash.each do |data_key, value|
-            if data_key["data"]
-                value.each do |hash_keys|
-                    if hash_keys["title"]
-                        alerts << hash_keys["title"]
-                    end
-                    
-                    if hash_keys["description"]
-                        desc << hash_keys["description"]
-                        
-                    
-                    end
-                end
-            end
-        end
-    
-        p alerts
-        p desc
-    
-    end
+   
 
 
     

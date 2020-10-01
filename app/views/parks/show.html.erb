@@ -21,6 +21,25 @@
     <p> <%= @park_api["operatingHours"][0]["description"] %></p>
 <% end %>
 
+<h3> Recent or Upcoming Events </h3>
+<ul>
+<li><%= @park.get_events%></li>
+</ul>
+
+<h3> Campgrounds </h3>
+<ul>
+<% @park.get_campgrounds.each do |cg|%>
+<li> <%= cg %></li>
+<%end%>
+</ul>
+
+<h3> Activities at Park </h3>
+<ul>
+<% @park.get_thingstodo.each do |act|%>
+<li> <%= act%></li>
+<%end%>
+</ul>
+
 
 <h2>Weather Info</h2>
 <%= @park_api["weatherInfo"] %>
