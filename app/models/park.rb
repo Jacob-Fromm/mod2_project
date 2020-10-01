@@ -58,12 +58,13 @@ class Park < ApplicationRecord
                 value.each do |hash_keys|
                     activities << hash_keys["title"]
                 end
+                end
             end
             if activities.any?
                 activities
             else
                 activities << "No featured activities at this time"
-        end
+            end
         activities
     end
 
