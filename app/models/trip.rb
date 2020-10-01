@@ -2,12 +2,8 @@ class Trip < ApplicationRecord
   belongs_to :user
   belongs_to :park
 
-  validate :start_date_before
-
-  def start_date_before
-    if self.trip_start_date.to_date > self.trip_end_date.to_date
-       puts self.trip_start_date.to_date
-      redirect_to home_path
-    end
-  end
+  validates :trip_start_date, :trip_end_date, presence: true
+  validates_date :trip_start_date, on_or_after: lambda {Date.current} 
+  validates_date :trip_end_date, after: :trip_start_date
+  
 end

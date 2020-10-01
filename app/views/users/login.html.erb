@@ -8,9 +8,9 @@
 
 <div class="container-fluid">
   <% if flash[:message] %>
-    <p> <%= flash[:message] %> </p>
+    <p class='text-white'> <%= flash[:message] %> </p>
     <% elsif flash[:success] %>
-    <p> Thanks for creating your account, please login</p>
+    <p class='text-white'> Thanks for creating your account, please login</p>
   <% end %>
   <ul>
     <%= form_tag '/login' do%>

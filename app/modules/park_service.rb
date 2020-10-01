@@ -5,7 +5,7 @@ module ParkService
 	@@parks = []
 
 	def request(endpoint)
-		uri = URI.parse("https://developer.nps.gov/api/v1/#{endpoint}")
+		uri = URI.parse("https://developer.nps.gov/api/v1/#{endpoint}&limit=500")
 		request = Net::HTTP::Get.new(uri)
 		request["X-Api-Key"] = "e1pgCWYc3nsrAOY3HnhZGQ75nuJffj4gyrsQjAD5"
 
@@ -27,7 +27,19 @@ module ParkService
 
 	def park(parkCode)
 		request("parks?parkCode=#{parkCode}")
-	end
+  end
+  
+  def park_amenities(parkCode)
+    request("amenities/parksplaces?parkCode=#{parkCode}")
+  end
+
+  def park_alerts(parkCode)
+    request("alerts?parkCode=#{parkCode}")
+  end
+
+  def park_news(parkCode)
+    request("newsreleases?parkCode=#{parkCode}")
+  end
 
 
 

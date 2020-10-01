@@ -11,13 +11,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params(:name, :email, :password))
-    # user.email = user.email.downcase
+    user = User.create(user_params(:name, :email, :password, :password_confirmation))
     if user.valid?
       # user.save
       flash[:success] = "#{user.email}"
       redirect_to login_path
     else  
+      if user.errors.messages.has_key?(:password)
+        # pass name and email back to form 
+        flash[:name] = "#{user.name}"
+        flash[:email] = "#{user.email}"
+      end
       flash[:message] = user.errors.full_messages
       redirect_to new_user_path
     end
@@ -25,11 +29,13 @@ class UsersController < ApplicationController
 
   def edit 
     @user = User.find(params[:id])
+    flash[:name] = "#{@user.name}"
+    flash[:email] = "#{@user.email}"
   end
 
   def update 
     @user = User.find(params[:id])
-    @user.update(user_params(:name, :password))
+    @user.update(user_params(:name, :password, :password_confirmation))    
     if @user.valid?
       redirect_to home_path
     else  
@@ -39,7 +45,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    
      @current_user.destroy
     redirect_to login_path
   end
