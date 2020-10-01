@@ -18,7 +18,11 @@
   list-style: none;
 }
 
-body {
+.text-white {
+  text-shadow: 1px 1px 6px #666666;
+}
+
+.main {
     background: url(../assets/zion.jpg);
     background-position: center;
     background-repeat: no-repeat;
