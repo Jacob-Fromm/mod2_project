@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users
   get '/search', to: 'searches#new'
   post '/search', to: 'searches#show'
+
+  get '/cookie', to: 'trips#cookie', as: 'cookie'
+  post '/cookie', to: 'trips#create'
    
 
 

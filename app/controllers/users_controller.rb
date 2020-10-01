@@ -44,9 +44,7 @@ class UsersController < ApplicationController
     redirect_to login_path
   end
 
-  def login
-
-  end
+ 
   
   def handle_login
     @user = User.find_by(email: params[:email].downcase)
@@ -61,7 +59,7 @@ class UsersController < ApplicationController
 
   def logout
     session[:username] = nil
-    redirect_to home_path
+    redirect_to login_path
   end
 
   private 

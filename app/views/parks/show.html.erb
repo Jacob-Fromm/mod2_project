@@ -6,6 +6,48 @@
 <li> <%= @park_api["description"]%> </li>
     </ul>
 
+<h2> BOOK A TRIP HERE </h2>
+    <%= link_to "Booking Page", cookie_path%>
+
+    <% if @park_api["operatingHours"][0]["exceptions"][0]%>
+<h2>Hours of Operation</h2>
+<p><%= @park_api["operatingHours"][0]["exceptions"][0]["name"] %></p>
+<p>As of: <%= @park_api["operatingHours"][0]["exceptions"][0]["startDate"] %></p>
+<% @park_api["operatingHours"][0]["exceptions"][0]["exceptionHours"].each do |day, hours| %>
+   <p><%= "#{day.capitalize}: #{hours}" %></p> 
+<% end %>
+<p>Typical operating hours: <%= @park_api["operatingHours"][0]["description"] %></p>    
+<%else%>
+<h2>Hours of Operation</h2> <p> <%= @park_api["operatingHours"][0]["description"] %></p><% end %>
+<h2>Fees</h2>
+<% @park_api["entranceFees"].each do |fee|%>
+   <ul>
+        <li><%= fee["title"] %></li>
+        <ul>
+            <li>$<%= fee["cost"] %></li>
+        </ul>
+   </ul> 
+<% end %>
+
+<h2>Passes</h2>
+<% @park_api["entrancePasses"].each do |fee|%>
+   <ul>
+        <li><%= fee["title"] %></li>
+        <ul>
+            <li>$<%= fee["cost"] %></li>
+        </ul>
+   </ul> 
+<% end %>
+
+
+<h2> Featured Activities </h2>
+<ul>
+<% @park.get_thingstodo.each do |act|%>
+<li> <%=act%></li>
+</ul>
+<%end%>
+    
+
 <h2> Contact Info </h2>
     
     <%@park_api["contacts"].each do |index|%>
@@ -23,13 +65,44 @@
     <%end%>
     <%end%>
     
+<h2> Campgrounds </h2>
+    <%@park.get_campgrounds.each do |cg|%>
+    <%=cg%>
+    <%end%>
 
+<h2> Important Information </h2>
+    <%@park.get_alerts.each do |a|%>
+        <ul>
+    <li><%= a%></li>
+        </ul>
+    <%end%>
+
+<h2>News Releases</h2>
+<% @park_news.each do |news| %>
+    <h3><a href=<%= news["url"]%>><%= news["title"] %></a></h3>
+    <p><%= news["abstract"] %></p>
+    <img src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
+<% end %>⸀
+       
+
+<h2>Alerts</h2>
+<% @park_alerts.each do |alert| %>
+    <ul>
+        <li><a href=<%= alert["url"]%>><%= alert["title"] %></a></li>
+    </ul>
+<% end %>
 
 <h2>Amenities</h2>
 <% @park_amenities.each do |amen| %>
     <ul>
-        <li><%= amen %></li>
+        <li><%= amen[0]["name"] %></li>
     </ul>
 <% end %>
+<a href=<%= @park_api["url"] %>>See park website for more details.</a>
+
+
+<br><img src=<%= @park_api["images"][0]["url"]%> alt=<%= @park_api["images"][0]["altText"]%>>
+
+
 
 

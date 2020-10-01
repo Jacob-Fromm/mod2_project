@@ -13,16 +13,25 @@ class ParksController < ApplicationController
     
     def show
         @park = Park.find(params[:id])
+        if @park
+            cookies[:park_id] = @park.id
+        end
         if @client.parks.find {|park| park["fullName"] == @park.park_name}
             park_code = @client.parks.each.select {|park| park["fullName"] == @park.park_name}[0]["parkCode"]
             @park_api = @client.park(park_code)[0]
             
             @park_campgrounds = @client.park_campgrounds(park_code)
-            @park_amenities = @client.park_amenities(park_code).map {|amenity| amenity["name"] }
-            
+            @park_amenities = @client.park_amenities(park_code)
+            @park_alerts = @client.park_alerts(park_code)
+            @park_news = @client.park_news(park_code)
         end
+        
+        
     
     end
+
+
+    
 
     private
 

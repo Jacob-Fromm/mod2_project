@@ -1,8 +1,8 @@
-<h1> Book A Trip Through Us! </h1>
+<h1> Book A Site Through Us! </h1>
 
 <%= form_for @trip do |f|%>
-<%= f.label :park_id %>
-<%= f.collection_select :park_id, Park.all, :id, :park_name%>
+
+
 <%= f.label :trip_start_date%>
 <%= f.date_field :trip_start_date%>
 <%= f.label :trip_end_date%>

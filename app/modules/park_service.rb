@@ -38,7 +38,15 @@ module ParkService
   end
 
   def park_amenities(parkCode)
-    request("amenities?parkCode=#{parkCode}")
+    request("amenities/parksplaces?parkCode=#{parkCode}")
+  end
+
+  def park_alerts(parkCode)
+    request("alerts?parkCode=#{parkCode}")
+  end
+
+  def park_news(parkCode)
+    request("newsreleases?parkCode=#{parkCode}")
   end
 
 

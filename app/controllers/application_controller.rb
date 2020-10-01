@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :authorized
   helper_method :logged_in?
+  
+  
 
     # include NPS
     # before_action :client
@@ -17,6 +19,12 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by(id: session[:username])
   end
 
+ 
+   
+   
+  
+  
+  
   def logged_in?
     !!set_current_user
   end
