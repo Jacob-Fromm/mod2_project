@@ -1,9 +1,12 @@
+
+
+
 <h1> Park Data Example </h1>
 
 <h2><%= @park_api["fullName"]%></h2>
 <a href=<%= @park_api["url"]%>><%=@park_api["fullName"] %> Website</a>
 <br>
-<img src=<%= @park_api["images"][0]["url"]%> alt=<%= @park_api["images"][0]["altText"]%>>
+<img class="img-fluid stretch float-right" src=<%= @park_api["images"][0]["url"]%> alt=<%= @park_api["images"][0]["altText"]%>>
 
 <%= link_to "Book a trip to #{@park_api["fullName"]}", new_trip_path(@park_to_trip) %></h2>
 
@@ -75,7 +78,7 @@
 <% @park_news.each do |news| %>
     <h3><a href=<%= news["url"]%>><%= news["title"] %></a></h3>
     <p><%= news["abstract"] %></p>
-    <img src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
+    <img class="small_img float-right" src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
 <% end %>
 
 <h2>Amenities</h2>

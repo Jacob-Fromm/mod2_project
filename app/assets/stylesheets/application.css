@@ -111,3 +111,15 @@ input {
 a:hover {
   color: #FFD67A !important;
 }
+
+.stretch {
+  height: 30%;
+  width: 50%;
+
+
+}
+
+
+.small_img {
+  width: 50%;
+}
