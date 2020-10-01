@@ -1,19 +1,9 @@
 
-<h1>Parks</h1> 
-
-<%# <% @parks.map do |park| %>
-    <%# <ul> %>
-        <%# <li><%= park["fullName"]</li> %>
-    <%# </ul> %>
-<%# <% end %> 
-
-<%# <h1> List of National Parks with Campsites </h1> %>
+<h2 class="text-white">Parks</h2> 
 
 <ul>
     <% @parks.each do |park|%>
-    <li><%=park.park_name%></li>
-    <li><%= link_to "Park Page", park_path(park.id)%></li>
-     <%end%>
-     <br><br>
+        <li><%= link_to park.park_name, park_path(park.id)%></li>
+    <%end%>
 </ul>
 
