@@ -8,7 +8,9 @@ class ParksController < ApplicationController
     end
     
     def index
-        @parks = Park.all
+        
+        @parks = Park.search(params[:search])
+        
     end
     
     def show
@@ -27,7 +29,7 @@ class ParksController < ApplicationController
     private
 
     def set_params
-        params.require(:park).permit!
+        params.require(:park).permit(:id, :park_name, :park_code, :search)
     end
 end
 

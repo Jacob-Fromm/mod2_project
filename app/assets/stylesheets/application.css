@@ -22,7 +22,7 @@
   text-shadow: 1px 1px 6px #666666;
 }
 
-.main {
+.home-img {
     background: url(../assets/zion.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -31,7 +31,20 @@
     position: relative;
     top: 10vh;
     padding: 5%;
+    height: 16vh;
 }
+
+.index_search {
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+    z-index: -1;
+    position:relative;
+
+}
+
+
 
 .logo {
   width: 75px;
@@ -49,8 +62,13 @@ header {
 }
 
 
+a:hover {
+  color: #FFD67A !important;
+  text-decoration: none;
+}
 
-h1, .fa-user-circle, .h1 {
+
+h1, .fa-user-circle, .h1, a {
   color: #FF6600;
 }
 .h1:hover {
@@ -104,9 +122,6 @@ h1, .fa-user-circle, .h1 {
 
 input {
   outline-color: #FF9D44; 
-}
-a:hover {
-  color: #FFD67A !important;
 }
 
 .stretch {

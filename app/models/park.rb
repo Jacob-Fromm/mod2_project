@@ -11,7 +11,21 @@ class Park < ApplicationRecord
      # can get around limitations by getting limit 1-100, 2-200
      # self.park_code = Park.find(park_code: params[:park_code])
 
+    def self.search(search)
+        if search
+            park = Park.find_by(park_name: search)
+            if park
+                self.where(id: park.id)
+            else
+                @parks = Park.all
+            end
+        else
+            @parks = Park.all
+        end
     
+    
+    
+    end
 
 
     def get_campgrounds
