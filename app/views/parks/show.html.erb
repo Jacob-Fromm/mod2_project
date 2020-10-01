@@ -1,7 +1,7 @@
 
 
 
-<h1> Park Data Example </h1>
+<h1> <%@park.park_name%> </h1>
 
 <h2><%= @park_api["fullName"]%></h2>
 <a href=<%= @park_api["url"]%>><%=@park_api["fullName"] %> Website</a>
@@ -26,7 +26,9 @@
 
 <h3> Recent or Upcoming Events </h3>
 <ul>
-<li><%= @park.get_events%></li>
+<% @park.get_events.each do |e|%>
+<li> <%= e%> </li>
+<%end%>
 </ul>
 
 <h3> Campgrounds </h3>

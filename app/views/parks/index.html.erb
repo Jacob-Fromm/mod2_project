@@ -1,7 +1,11 @@
 
 <h2 class="text-white">Parks</h2> 
 
-<ul class="list_column">
+<%= form_tag (parks_path method: :get)%>
+<%= text_field_tag :park, params[:park_name]%>
+<%= submit_tag 'Search'%>
+<%end%>
+<ul class="list_column pt2">
     <% @parks.each do |park|%>
         <li><%= link_to park.park_name, park_path(park.id)%></li>
     <%end%>

@@ -48,10 +48,6 @@ header {
   align-items: center;
 }
 
-.logo, .h1, .user-top-r {
-  border: 10px solid sandybrown;
-
-}
 
 
 h1, .fa-user-circle, .h1 {
@@ -135,9 +131,10 @@ a:hover {
 
 .list_column {
   -moz-column-count: 2;
-  -moz-column-gap: 20px;
+  -moz-column-gap: 30px;
   -webkit-column-count: 2;
   -webkit-column-gap: 20px;
   column-count: 2;
   column-gap: 20px;
+  
 }
