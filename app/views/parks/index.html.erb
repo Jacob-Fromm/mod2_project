@@ -9,7 +9,7 @@
 
 <%# <h1> List of National Parks with Campsites </h1> %>
 
-<ul>
+<ul class="list_column">
     <% @parks.each do |park|%>
     <p><%=park.park_name%></p>
     <li><%= link_to "Park Page", park_path(park.id)%></li>
