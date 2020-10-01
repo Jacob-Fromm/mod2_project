@@ -78,7 +78,7 @@
 <% @park_news.each do |news| %>
     <h3><a href=<%= news["url"]%>><%= news["title"] %></a></h3>
     <p><%= news["abstract"] %></p>
-    <img class="small_img float-right" src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
+    <img class="small_img fluid-img" src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
 <% end %>
 
 <h2>Amenities</h2>

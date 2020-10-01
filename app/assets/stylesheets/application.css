@@ -65,6 +65,7 @@ h1, .fa-user-circle, .h1 {
 .user-top-r {
   grid-column: 4/4;
   display: flex;
+  max-width: 200px;
 }
 .user-top-r a {
   flex: 50%;
@@ -119,7 +120,24 @@ a:hover {
 
 }
 
+.img_container {
+  
+  position: relative;
+
+}
 
 .small_img {
-  width: 50%;
+  position: relative; 
+  top: -2px;
+  width: 30%;
+}
+
+
+.list_column {
+  -moz-column-count: 2;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+  column-count: 2;
+  column-gap: 20px;
 }

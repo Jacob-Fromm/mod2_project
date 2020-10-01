@@ -1,7 +1,7 @@
 
 <h2 class="text-white">Parks</h2> 
 
-<ul>
+<ul class="list_column">
     <% @parks.each do |park|%>
         <li><%= link_to park.park_name, park_path(park.id)%></li>
     <%end%>
