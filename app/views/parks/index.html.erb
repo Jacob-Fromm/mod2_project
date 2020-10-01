@@ -11,7 +11,7 @@
 
 <ul>
     <% @parks.each do |park|%>
-    <li><%=park.park_name%></li>
+    <p><%=park.park_name%></p>
     <li><%= link_to "Park Page", park_path(park.id)%></li>
      <%end%>
      <br><br>
