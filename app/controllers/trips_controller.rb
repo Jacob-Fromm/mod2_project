@@ -8,7 +8,7 @@ class TripsController < ApplicationController
         @trip = Trip.new(user_id: @current_user)
         @trip.save
     end
-
+    
     def create
         @trip = @current_user.trips.create(trip_params)
         if @trip.valid?
@@ -20,6 +20,7 @@ class TripsController < ApplicationController
     end
 
     def edit
+
     end
 
     def update
@@ -36,10 +37,17 @@ class TripsController < ApplicationController
         @trip = @current_user.trips.find(params[:id])
         @trip.destroy
         redirect_to home_path
-       
             
     
     end
+
+    # def handle_date
+    #     a = '2020-10-02'
+    #     b = a.split("-").map{|n| n.to_i}
+    #     c = Date.new(b[0], b[1], b[2])
+    # end
+
+
     private
 
     def trip_params
@@ -47,6 +55,6 @@ class TripsController < ApplicationController
     end
 
     def find_trip
-         @trip = Trip.find(params[:id])
+        @trip = Trip.find(params[:id])
     end
 end

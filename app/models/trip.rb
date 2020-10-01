@@ -6,5 +6,4 @@ class Trip < ApplicationRecord
   validates_date :trip_start_date, on_or_after: lambda {Date.current} 
   validates_date :trip_end_date, after: :trip_start_date
   
-  
 end

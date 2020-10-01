@@ -1,10 +1,10 @@
 <h1> Update your Trip Information </h1>
-<% if flash[:trip_errors] %>
-    <p style="color:red">Error:</p>
-    <% flash[:trip_errors].each do |message| %>
-        <ul>
-            <li style="color:red"><%= message %></li>
-        </ul>
-    <% end %>
-<% end %>   
-<%= render "form" %>
+    <% if flash[:trip_errors] %>
+        <p style="color:red">Error:</p>
+        <% flash[:trip_errors].each do |message| %>
+            <ul>
+                <li style="color:red"><%= message %></li>
+            </ul>
+        <% end %>
+    <% end %>   
+    <%= render "form" %>
