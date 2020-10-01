@@ -24,7 +24,7 @@ class TripsController < ApplicationController
 
     def update
         @trip.update(trip_params)
-        byebug
+        
         if @trip.valid?
             redirect_to home_path
         else
