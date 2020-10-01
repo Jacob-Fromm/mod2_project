@@ -19,7 +19,7 @@ class ParksController < ApplicationController
             @park_amenities = @client.park_amenities(park_code)
             @park_alerts = @client.park_alerts(park_code)
             @park_news = @client.park_news(park_code)
-            byebug
+        
         end
     
     end
