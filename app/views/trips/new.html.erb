@@ -1,12 +1,12 @@
 <h1> Book A Site Through Us! </h1>
 
-<%= form_for @trip do |f|%>
-<%= f.label :park_id %>
-<%= f.collection_select :park_id, Park.all, :id, :park_name%>
-<%= f.label :trip_start_date%>
-<%= f.date_field :trip_start_date%>
-<%= f.label :trip_end_date%>
-<%= f.date_field :trip_end_date%>
-<%=f.submit%>
+<% if flash[:trip_errors] %>
+    <p style="color:red">Error:</p>
+    <% flash[:trip_errors].each do |message| %>
+        <ul>
+            <li style="color:red"><%= message %></li>
+        </ul>
+    <% end %>
+<% end %>   
 
-<%end%>
+<%= render "form" %>

@@ -1,49 +1,52 @@
 class TripsController < ApplicationController
+    before_action :find_trip, only: [:show, :edit, :update, :destroy]
+    
     def show
-        @trip = Trip.find(params[:id])
     end
 
     def new
-        if @current_user.valid?
-            @trip = Trip.new(user_id: @current_user)
-        else 
-            flash[:user_error] = "You are not logged in! You must be logged in to your account in order to book a trip!"
-            redirect_to login_user_path
-        end
+        @trip = Trip.new(user_id: @current_user)
+        @trip.save
     end
 
     def create
-        if @current_user.valid?
-            @trip = @current_user.trips.create(trip_params)
+        @trip = @current_user.trips.create(trip_params)
+        if @trip.valid?
             redirect_to home_path
+        else
+            flash[:trip_errors] = @trip.errors.full_messages
+            redirect_to new_trip_path
         end
-
     end
 
     def edit
-        @trip = Trip.find(params[:id])
-
     end
 
     def update
-        if @current_user.valid?
-            @trip = @current_user.trips.update(trip_params)
+        @trip.update(trip_params)
+        byebug
+        if @trip.valid?
             redirect_to home_path
+        else
+            redirect_to edit_trip_path
         end
     end
     
     def destroy
-        if @current_user.valid?
-            @trip = @current_user.trips.find(params[:id])
-            @trip.destroy
-            redirect_to home_path
-        end
+        @trip = @current_user.trips.find(params[:id])
+        @trip.destroy
+        redirect_to home_path
+       
             
     
     end
     private
 
     def trip_params
-        params.require(:trip).permit(:user_id, :park_id)
+        params.require(:trip).permit(:user_id, :park_id, :trip_start_date, :trip_end_date)
+    end
+
+    def find_trip
+         @trip = Trip.find(params[:id])
     end
 end
