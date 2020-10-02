@@ -16,7 +16,7 @@
       <h1 class="m-1"> <%= link_to 'ParkPlanner', home_path, class: "h1" %> </h1>
       <div class="user-top-r container">
         <% if @current_user %>
-        <a href= "<%=edit_user_path(@current_user)%>">
+        <a href= "<%=user_path(@current_user)%>">
           <i class="fas fa-user-circle"></i>
           <h3 class="mt-2 mb-2"> <%= @current_user.name %> </h3>
         </a>

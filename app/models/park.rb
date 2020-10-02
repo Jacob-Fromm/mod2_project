@@ -15,14 +15,14 @@ class Park < ApplicationRecord
         if search
             park = Park.find_by(park_name: search)
             if park
-                self.where(id: park.id)
+                self.where(id: park)
             else
                 @parks = Park.all
             end
         else
             @parks = Park.all
         end
-    
+        
     
     
     end
