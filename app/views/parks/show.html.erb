@@ -1,16 +1,15 @@
 
-<h2> <%@park.park_name%> </h2>
-
-<h3><%= @park_api["fullName"]%></h3>
-<a href=<%= @park_api["url"]%>><%=@park_api["fullName"] %> Website</a>
+<h2 class="mt-2 mb-4 text-center"><%= @park_api["fullName"]%></h2>
+<a href=<%= @park_api["url"]%> class="my-2 width-100" > <%=@park_api["fullName"] %> Website</a>
 <br>
 <img class="img-fluid stretch float-right" src=<%= @park_api["images"][0]["url"]%> alt=<%= @park_api["images"][0]["altText"]%>>
 
-<%= link_to "Book a trip to #{@park_api["fullName"]}", new_trip_path(@park_to_trip) %></h2>
+<% cookies[:park_id] = params[:id] %>
+<%= link_to "Book a trip to #{@park_api["fullName"]}", new_trip_path(@park_to_trip) %>
 
 
 <% if @park_api["operatingHours"][0]["exceptions"][0] %>
-    <h2>Hours of Operation</h2>
+    <h4 class="mt-2 mb-3">Hours of Operation</h4>
     <p><%=  @park_api["operatingHours"][0]["exceptions"][0]["name"] %></p>
     <p>As of: <%= @park_api["operatingHours"][0]["exceptions"][0]["startDate"] %></p>
     <% @park_api["operatingHours"][0]["exceptions"][0]["exceptionHours"].each do |day, hours| %>
@@ -22,21 +21,21 @@
     <p> <%= @park_api["operatingHours"][0]["description"] %></p>
 <% end %>
 
-<h3> Recent or Upcoming Events </h3>
+<h4 class="mt-2 mb-3"> Recent or Upcoming Events </h4>
 <ul>
 <% @park.get_events.each do |e|%>
 <li> <%= e%> </li>
 <%end%>
 </ul>
 
-<h3> Campgrounds </h3>
+<h4 class="mt-2 mb-3"> Campgrounds </h4>
 <ul>
 <% @park.get_campgrounds.each do |cg|%>
 <li> <%= cg %></li>
 <%end%>
 </ul>
 
-<h3> Activities at Park </h3>
+<h4 class="mt-2 mb-3"> Activities at Park </h4>
 <ul>
 <% @park.get_thingstodo.each do |act|%>
 <li> <%= act%></li>
@@ -44,17 +43,17 @@
 </ul>
 
 
-<h2>Weather Info</h2>
+<h4 class="mt-2 mb-3">Weather Info</h4>
 <%= @park_api["weatherInfo"] %>
 
-<h2>Alerts</h2>
+<h4 class="mt-2 mb-3">Alerts</h4>
 <% @park_alerts.each do |alert| %>
     <ul>
         <li><a href=<%= alert["url"]%>><%= alert["title"] %></a></li>
     </ul>
 <% end %>
 
-<h2>Fees</h2>
+<h4 class="mt-2 mb-3">Fees</h4>
 <% @park_api["entranceFees"].each do |fee|%>
    <ul>
         <li><%= fee["title"] %></li>
@@ -64,7 +63,7 @@
    </ul> 
 <% end %>
 
-<h2>Passes</h2>
+<h4 class="mt-2 mb-3">Passes</h4>
 <% @park_api["entrancePasses"].each do |fee|%>
    <ul>
         <li><%= fee["title"] %></li>
@@ -74,14 +73,14 @@
    </ul> 
 <% end %>
 
-<h2>News Releases</h2>
+<h4 class="mt-2 mb-3">News Releases</h4>
 <% @park_news.each do |news| %>
-    <h3><a href=<%= news["url"]%>><%= news["title"] %></a></h3>
+    <h5 class="my-2"><a href=<%= news["url"]%>><%= news["title"] %></a></h5>
     <p><%= news["abstract"] %></p>
     <img class="small_img fluid-img" src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
 <% end %>
 
-<h2>Amenities</h2>
+<h4 class="mt-2 mb-3">Amenities</h4>
 <% @park_amenities.each do |amen| %>
     <ul>
         <li><%= amen[0]["name"] %></li>

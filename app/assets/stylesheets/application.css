@@ -98,6 +98,7 @@ header {
   height: 12vh;
   position: fixed !important;
   background:linear-gradient(#ffffff, #ffffff, 93%,rgba(255,255,255,.1));
+  z-index: 23;
 }
 
 
@@ -164,6 +165,7 @@ h1 {
   top: 10vh;
   padding: 5%;
   height: 16vh;
+  z-index: 24;
 }
 
 .main {
