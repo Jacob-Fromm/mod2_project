@@ -11,16 +11,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params(:name, :email, :password, :password_confirmation))
-    if user.valid?
+    @user = User.create(user_params(:name, :email, :password, :password_confirmation))
+    if @user.valid?
       # user.save
-      flash[:success] = "#{user.email}"
+      UserMailer.with(user: @user).sign_up_email.deliver_now
+      flash[:success] = "#{@user.email}"
+
       redirect_to login_path
     else  
-      if user.errors.messages.has_key?(:password)
+      if @user.errors.messages.has_key?(:password)
         # pass name and email back to form 
-        flash[:name] = "#{user.name}"
-        flash[:email] = "#{user.email}"
+        flash[:name] = "#{@user.name}"
+        flash[:email] = "#{@user.email}"
       end
       flash[:message] = user.errors.full_messages
       redirect_to new_user_path
