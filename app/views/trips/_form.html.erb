@@ -1,7 +1,7 @@
 
 <%= form_for @trip do |f|%>
   <div class="width-100 my-2 flex-center flexy mb-4"><%= f.label :park_id, nil, class:'my-2 px-2' %>
-  <%= f.collection_select :park_id, Park.all, :id, :park_name %></div>
+  <%= f.collection_select :park_id, Park.all, :id, :park_name, { :selected => cookies[:park_id] } %></div>
   <%= f.label :trip_start_date, "Start Date", class: "px-2" %>
   <%= f.date_field :trip_start_date %>
   <%= f.label :trip_end_date, nil, class: "px-2" %>
