@@ -15,10 +15,10 @@
   <ul>
     <%= form_tag '/login' do%>
       <li> <%= label_tag :email, nil, class:'mt-2 mb-2' %> </li>
-      <li> <%= text_field_tag :email, flash[:success], class: "input-group width-50 mt-2 mb-2" %> </li>
+      <li> <%= text_field_tag :email, flash[:success], class: "input-group width-30 mt-2 mb-2" %> </li>
       <li> <%= label_tag :password, nil, class:'mt-2 mb-2' %> </li>
-      <li> <%= password_field_tag :password, nil, class: "input-group width-50 mt-2 mb-2" %> </li>
-      <li> <%= submit_tag "log in", class: "btn btn-primary border-white mt-4 mb-3"%> </li>
+      <li> <%= password_field_tag :password, nil, class: "input-group width-30 mt-2 mb-2" %> </li>
+      <li> <%= submit_tag "log in", class: "btn btn-primary border-white mt-4 mb-3 width-30"%> </li>
       <li> <%= link_to "Not a User? Sign up Here!", new_user_path, class: "mt-2 mb-2"%> </li>
     <% end %>
   </ul>

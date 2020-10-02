@@ -14,12 +14,19 @@
   <body>
     <header class="header-bar">
       <img src="/assets/pp-vector2.1.png" alt="logo" class="logo">
-      <h1 class="m-1"> <%= link_to 'ParkPlanner', home_path, class: "h1" %> </h1>
+      <h1 class="m-1"> 
+      <%# link_to 'ParkPlanner', home_path, class: "h1" %> 
+        <a href="/">ParkPlanner
+        <figcaption><p class="pop-up right">Home Page</p></figcaption>
+        </a>
+      </h1>
+      
       <div class="user-top-r container">
         <% if @current_user %>
         <a href= "<%=user_path(@current_user)%>">
           <i class="fas fa-user-circle"></i>
           <h3 class="mt-2 mb-2"> <%= @current_user.name %> </h3>
+          <figcaption><p class="pop-up left">User Profile</p></figcaption>
         </a>
           <%= button_to "log out", "/logout", method: :delete, class: "btn btn-primary border-0 mt-2 mb-2" %>
         <% else %>
