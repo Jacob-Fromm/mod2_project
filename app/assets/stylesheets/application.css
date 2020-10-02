@@ -6,6 +6,16 @@ body {
   font-family: 'Raleway', sans-serif;
 
 }
+
+.font-2 {
+  font-size: 1.25rem;
+}
+
+.marg-33 {
+  margin-left: 33.33%;
+}
+
+
 .text-white {
   text-shadow: 1px 1px 6px #666666;
 }
@@ -93,6 +103,31 @@ header {
   margin-top: 1.5px;
 }
 
+.pop-up {
+  opacity: 0;
+  transition: opacity .4s ease-in-out; 
+  transition-delay: 1s;
+  position: absolute;
+  top: 6vh;
+  left: -8vw;
+  background-color: #333333;
+  padding: 1vh 1vw;
+  color: #ffffff;
+  font-size: 12px; 
+}
+
+.right {
+  left: 35vw;
+}
+
+.header-bar a:hover .pop-up{
+  opacity: 1; 
+}
+
+.header-bar h1 a:hover .pop-up {
+  opacity: 1;
+}
+
 .header-mask {
   width: 100%;
   height: 12vh;
@@ -121,6 +156,7 @@ h1 {
   grid-column: 4/4;
   display: flex;
   max-width: 200px;
+  position: relative;
 }
 
 .user-top-r a {
@@ -181,6 +217,12 @@ h1 {
   position:relative;
 }
 
+.update-link {
+  border: 1px solid #111111;
+  border-radius: 4px;
+  display: block;
+  text-align: center;
+}
 
 .creators {
   color: #ffffff;
