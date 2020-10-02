@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         flash[:name] = "#{@user.name}"
         flash[:email] = "#{@user.email}"
       end
-      flash[:message] = user.errors.full_messages
+      flash[:message] = @user.errors.full_messages
       redirect_to new_user_path
     end
   end
