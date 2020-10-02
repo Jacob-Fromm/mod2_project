@@ -89,6 +89,8 @@ header {
 .logo {
   width: 75px;
   height: 75px;
+  justify-self: end;
+  margin-top: 1.5px;
 }
 
 .header-mask {
