@@ -17,7 +17,7 @@
   <%= button_to "Cancel Your Trip", trip_path(trip), method: :delete, data: { confirm: 'Are you sure you want to cancel? Notice: You may be subject to a cancellation fee.' }%>
   <br>
 <%end%>
-
-<p><%=link_to "Book another Trip!", new_trip_path, class: "mt-2 mb-2"%></p>
-<p><%= link_to "Check out NPS parks", parks_path, class: "mt-2 mb-2" %></p>
+<h4 class="mt-2 mb-3"><%= link_to "Search our Parks Index!", search_path, class: "mt-3 mb-3"%></h4>
+<h4 class="mt-2 mb-3"><%=link_to "Book another Trip!", new_trip_path, class: "mt-3 mb-3"%></h4>
+<h4 class="mt-2 mb-3"><%= link_to "Check out NPS parks", parks_path, class: "mt-3 mb-3" %></h4>
 

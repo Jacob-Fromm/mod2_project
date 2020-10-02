@@ -1,4 +1,4 @@
-<h2 class="text-white mt-2 mb-4">Login</h2>
+<h2 class="mt-2 mb-4">Login</h2>
 
 <div>
 <%# if flash[:user_error]%>
@@ -8,18 +8,18 @@
 
 <div class="container-fluid">
   <% if flash[:message] %>
-    <p class='text-white'> <%= flash[:message] %> </p>
+    <p> <%= flash[:message] %> </p>
     <% elsif flash[:success] %>
-    <p class='text-white'> Thanks for creating your account, please login</p>
+    <p> Thanks for creating your account, please login</p>
   <% end %>
   <ul>
     <%= form_tag '/login' do%>
-      <li> <%= label_tag :email, nil, class:'text-white mt-2 mb-2' %> </li>
-      <li> <%= text_field_tag :email, flash[:success], class: "input-group border-white width-50 mt-2 mb-2" %> </li>
-      <li> <%= label_tag :password, nil, class:'text-white mt-2 mb-2' %> </li>
-      <li> <%= password_field_tag :password, nil, class: "input-group border-white width-50 mt-2 mb-2" %> </li>
+      <li> <%= label_tag :email, nil, class:'mt-2 mb-2' %> </li>
+      <li> <%= text_field_tag :email, flash[:success], class: "input-group width-50 mt-2 mb-2" %> </li>
+      <li> <%= label_tag :password, nil, class:'mt-2 mb-2' %> </li>
+      <li> <%= password_field_tag :password, nil, class: "input-group width-50 mt-2 mb-2" %> </li>
       <li> <%= submit_tag "log in", class: "btn btn-primary border-white mt-4 mb-3"%> </li>
-      <li> <%= link_to "Not a User? Sign up Here!", new_user_path, class: "text-white mt-2 mb-2"%> </li>
+      <li> <%= link_to "Not a User? Sign up Here!", new_user_path, class: "mt-2 mb-2"%> </li>
     <% end %>
   </ul>
     

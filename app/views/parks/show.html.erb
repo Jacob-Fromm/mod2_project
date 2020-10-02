@@ -1,5 +1,7 @@
 
-<h2><%= @park_api["fullName"]%></h2>
+<h2> <%@park.park_name%> </h2>
+
+<h3><%= @park_api["fullName"]%></h3>
 <a href=<%= @park_api["url"]%>><%=@park_api["fullName"] %> Website</a>
 <br>
 <img class="img-fluid stretch float-right" src=<%= @park_api["images"][0]["url"]%> alt=<%= @park_api["images"][0]["altText"]%>>
@@ -22,7 +24,9 @@
 
 <h3> Recent or Upcoming Events </h3>
 <ul>
-<li><%= @park.get_events%></li>
+<% @park.get_events.each do |e|%>
+<li> <%= e%> </li>
+<%end%>
 </ul>
 
 <h3> Campgrounds </h3>
