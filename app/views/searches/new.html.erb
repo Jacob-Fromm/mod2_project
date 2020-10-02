@@ -1,11 +1,11 @@
-<h1>Welcome to the National Park Service Searcher!</h1>
-<h3>Please enter a request by park name</h3>
+<h2 class="mt-2 mb-4">Welcome to the National Park Service Searcher!</h2>
+<h4 class="text-orange mt-2 mb-4">Please enter a request by park name</h4>
 
 <% if flash[:error] %>
     <p style="color:red"><%= flash[:error] %></p>
 <% end %>
 <%= form_tag("/search", method: "post") do %>
   <%= label_tag(:fullName, "") %>
-  <%= text_field_tag(:fullName) %>
-  <%= submit_tag("Search") %>
+  <%= text_field_tag :fullName, nil, class:"mt-2 mb-2 input-pad" %>
+  <%= submit_tag "Search", class: "btn btn-primary border-white mt-2 mb-2" %>
 <% end %>
