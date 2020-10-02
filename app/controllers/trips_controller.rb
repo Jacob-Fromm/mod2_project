@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
-    before_action :find_trip, only: [:show, :edit, :update, :destroy]
+    # before_action :find_trip, only: [:show, :edit, :update, :destroy]
     
     def show
+        @trip = Trip.find(params[:id])
     end
 
     def new
@@ -12,6 +13,7 @@ class TripsController < ApplicationController
     def create
         @trip = @current_user.trips.create(trip_params)
         if @trip.valid?
+            drop_cookie
             redirect_to home_path
         else
             flash[:trip_errors] = @trip.errors.full_messages
@@ -19,7 +21,23 @@ class TripsController < ApplicationController
         end
     end
 
+    def cookie
+        @parktrip = Park.find_by(id: cookies[:park_id])
+            if @current_user && @parktrip
+        @trip = Trip.new(user_id: @current_user)
+            end
+   
+    end
+
+    
+
+    def drop_cookie
+        cookies.delete :park_id
+    end
+
+
     def edit
+        @trip = Trip.find(params[:id])
 
     end
 

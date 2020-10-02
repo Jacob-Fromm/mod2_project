@@ -1,0 +1,11 @@
+<%= form_for @trip do |f|%>
+<%= f.label :park_id "Park ID Locator"%>
+<%= f.text_field :park_id, :value => @parktrip.id%>
+
+<%= f.label :trip_start_date%>
+<%= f.date_field :trip_start_date%>
+<%= f.label :trip_end_date%>
+<%= f.date_field :trip_end_date%>
+<%=f.submit%>
+
+<%end%>

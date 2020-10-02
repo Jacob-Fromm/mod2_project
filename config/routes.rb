@@ -12,4 +12,12 @@ Rails.application.routes.draw do
 
    get '/', to: 'application#home', as: 'home'
 
+   get '/cookie', to: 'trips#cookie', as: 'cookie'
+  post '/cookie', to: 'trips#create'
+   
+
 end
+
+
+
+   

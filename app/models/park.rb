@@ -8,9 +8,7 @@ class Park < ApplicationRecord
      has_many :trips
      has_many :users, through: :trips
 
-     # can get around limitations by getting limit 1-100, 2-200
-     # self.park_code = Park.find(park_code: params[:park_code])
-
+    
     def self.search(search)
         if search
             park = Park.find_by(park_name: search)

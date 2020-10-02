@@ -3,15 +3,12 @@
 
 
 <h4>Search for a Park</h4>
-<p class="search_index"><%= form_tag parks_path, :method => 'get' do%>
-
-<%= search_field_tag :search, params[:search]%>
-<%= submit_tag("Search", :park_name => nil)%>
+<p class="search_index">
+<%= form_tag parks_path, :method => 'get' do %>
+    <%= search_field_tag :search, params[:search], class:"mt-2 mb-2 input-pad width-30"%>
+    <%= submit_tag "Search", :park_name => nil, class: "btn btn-primary border-white mt-2 mb-2" %>
 <%end%>
 </p> 
-
-
-
 
 <ul class="list_column pt2">
     <% @parks.each do |park|%>

@@ -10,11 +10,19 @@ class ParksController < ApplicationController
     def index
         
         @parks = Park.search(params[:search])
+
+        if @parks == nil
+            flash[:error] = "Please enter a valid park name"
+            render :new
+        end
         
     end
     
     def show
         @park = Park.find(params[:id])
+        if @park
+            cookies[:park_id] = @park.id
+        end
         if @client.parks.find {|park| park["fullName"] == @park.park_name}
             park_code = @client.parks.each.select {|park| park["fullName"] == @park.park_name}[0]["parkCode"]
             @park_api = @client.park(park_code)[0]

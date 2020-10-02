@@ -1,10 +1,10 @@
+
 <%= form_for @trip do |f|%>
-<%= f.label :park_id %>
-<%= f.collection_select :park_id, Park.all, :id, :park_name%>
-<br>
-<%= f.label :trip_start_date%>
-<%= f.date_field :trip_start_date%>
-<%= f.label :trip_end_date%>
-<%= f.date_field :trip_end_date%>
-<%=f.submit%>
+  <div class="width-100 my-2 flex-center flexy mb-4"><%= f.label :park_id, nil, class:'my-2 px-2' %>
+  <%= f.collection_select :park_id, Park.all, :id, :park_name %></div>
+  <%= f.label :trip_start_date, "Start Date", class: "px-2" %>
+  <%= f.date_field :trip_start_date %>
+  <%= f.label :trip_end_date, nil, class: "px-2" %>
+  <%= f.date_field :trip_end_date %>
+  <div class="width-100 flexy"> <%= f.submit class: "btn btn-primary btn-lg width-30 border-white mt-4 mb-3" %> </div>
 <%end%>
