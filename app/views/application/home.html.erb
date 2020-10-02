@@ -13,6 +13,7 @@
 
 <% @current_user.trips.each do |trip|%> 
   <h4 class="mt-2 mb-3 font-2 text-center"><%= trip.park.park_name %></h4>
+  <p class="my-2 text-center"> <%= trip.trip_start_date %> - <%= trip.trip_end_date %> </p>
   <li class="marg-33"><%= link_to "Update Your Trip Information", edit_trip_path(trip), class: "update-link width-30 mt-4 mb-2 py-1"%></li>
   <%= button_to "Cancel Your Trip", trip_path(trip), method: :delete, class:"btn btn-primary width-30 border-white mt-2 mb-4 marg-33", data: { confirm: "Are you sure you want to cancel? Notice: You may be subject to a cancellation fee. "}%>
 <%end%>

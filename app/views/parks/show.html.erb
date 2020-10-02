@@ -1,24 +1,23 @@
 
 <h2 class="mt-2 mb-4 text-center"><%= @park_api["fullName"]%></h2>
-<a href=<%= @park_api["url"]%> class="my-2 width-100" > <%=@park_api["fullName"] %> Website</a>
-<br>
+<a href=<%= @park_api["url"]%> class="my-3 width-100 text-center block" > <%=@park_api["fullName"] %> Website</a>
+<% cookies[:park_id] = params[:id] %>
+<%= link_to "Book a trip to #{@park_api["fullName"]}", new_trip_path(@park_to_trip), class: "my-3 text-center block" %>
 <img class="img-fluid stretch float-right" src=<%= @park_api["images"][0]["url"]%> alt=<%= @park_api["images"][0]["altText"]%>>
 
-<% cookies[:park_id] = params[:id] %>
-<%= link_to "Book a trip to #{@park_api["fullName"]}", new_trip_path(@park_to_trip) %>
 
 
 <% if @park_api["operatingHours"][0]["exceptions"][0] %>
     <h4 class="mt-2 mb-3">Hours of Operation</h4>
-    <p><%=  @park_api["operatingHours"][0]["exceptions"][0]["name"] %></p>
-    <p>As of: <%= @park_api["operatingHours"][0]["exceptions"][0]["startDate"] %></p>
+    <p class="tab-in"><%=  @park_api["operatingHours"][0]["exceptions"][0]["name"] %></p>
+    <p class="tab-in">As of: <%= @park_api["operatingHours"][0]["exceptions"][0]["startDate"] %></p>
     <% @park_api["operatingHours"][0]["exceptions"][0]["exceptionHours"].each do |day, hours| %>
-    <p><%= "#{day.capitalize}: #{hours}" %></p> 
+    <p class="tab-in"><%= "#{day.capitalize}: #{hours}" %></p> 
     <% end %>
-    <p>Typical operating hours: <%= @park_api["operatingHours"][0]["description"] %></p>
+    <p class="tab-in">Typical operating hours: <%= @park_api["operatingHours"][0]["description"] %></p>
 <% else %>
-    <h2>Hours of Operation</h2>
-    <p> <%= @park_api["operatingHours"][0]["description"] %></p>
+    <h4>Hours of Operation</h4>
+    <p class="tab-in"> <%= @park_api["operatingHours"][0]["description"] %></p>
 <% end %>
 
 <h4 class="mt-2 mb-3"> Recent or Upcoming Events </h4>
@@ -44,7 +43,7 @@
 
 
 <h4 class="mt-2 mb-3">Weather Info</h4>
-<%= @park_api["weatherInfo"] %>
+    <p class="tab-in"> <%= @park_api["weatherInfo"] %> </p>
 
 <h4 class="mt-2 mb-3">Alerts</h4>
 <% @park_alerts.each do |alert| %>
@@ -74,11 +73,15 @@
 <% end %>
 
 <h4 class="mt-2 mb-3">News Releases</h4>
-<% @park_news.each do |news| %>
-    <h5 class="my-2"><a href=<%= news["url"]%>><%= news["title"] %></a></h5>
-    <p><%= news["abstract"] %></p>
-    <img class="small_img fluid-img" src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
-<% end %>
+<ul>
+    <% @park_news.each do |news| %>
+        <li>
+        <h5 class="my-2"><a href=<%= news["url"]%>><%= news["title"] %></a></h5>
+        <p class="tab-in"><%= news["abstract"] %></p>
+        <img class="small_img fluid-img" src=<%= news["image"]["url"]%> alt=<%= news["image"]["altText"]%>>
+        </li>
+    <% end %>
+</ul>
 
 <h4 class="mt-2 mb-3">Amenities</h4>
 <% @park_amenities.each do |amen| %>

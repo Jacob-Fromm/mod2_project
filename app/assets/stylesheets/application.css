@@ -7,6 +7,10 @@ body {
 
 }
 
+.block {
+  display: block;
+}
+
 .font-2 {
   font-size: 1.25rem;
 }
@@ -15,6 +19,9 @@ body {
   margin-left: 33.33%;
 }
 
+.tab-in {
+  margin-left: 40px;
+}
 
 .text-white {
   text-shadow: 1px 1px 6px #666666;
@@ -240,10 +247,16 @@ h1 {
   position: relative;
 }
 
+
+.img-fluid {
+  margin: 5% 5%;
+}
+
 .small_img {
   position: relative; 
   top: -2px;
   width: 30%;
+  margin: 2.5% 2.5%;
 }
 
 .list_column {
