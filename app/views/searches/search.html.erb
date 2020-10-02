@@ -1,0 +1,20 @@
+def self.search(search)
+        if search
+            park = Park.find_by(park_name: search)
+            if park
+                self.where(id: park)
+            else
+                @parks = Park.all
+            end
+        else
+            @parks = Park.all
+        end
+        
+    
+    
+    end
+
+    <%= form_tag search_path, method: => 'get' do%>
+    <%= search_field_tag :search, params[:search]%>
+<%= submit_tag("Search", :park_name => nil)%>
+<%end%>

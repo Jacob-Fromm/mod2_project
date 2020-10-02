@@ -31,7 +31,8 @@
     position: relative;
     top: 10vh;
     padding: 5%;
-    height: 16vh;
+    height: 10vh;
+    width: auto;
 }
 
 .index_search {

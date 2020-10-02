@@ -19,4 +19,10 @@ class SearchesController < ApplicationController
         
     end
 
+    def search(search)
+        @search = Park.find_by(park_name: search)
+
+    
+    end
+
 end

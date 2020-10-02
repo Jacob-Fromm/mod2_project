@@ -4,8 +4,10 @@
 <% if flash[:error] %>
     <p style="color:red"><%= flash[:error] %></p>
 <% end %>
-<%= form_tag("/search", method: "post") do %>
+<%= form_tag("/search", :method => 'get') do %>
   <%= label_tag(:fullName, "") %>
   <%= text_field_tag(:fullName) %>
   <%= submit_tag("Search") %>
 <% end %>
+
+

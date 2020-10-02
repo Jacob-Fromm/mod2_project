@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   resources :trips
   resources :parks
   resources :users
-  get '/search', to: 'searches#new', as: 'search'
-  post '/search', to: 'searches#show'
+  # get '/search', to: 'searches#new', as: 'search'
+  # post '/search', to: 'searches#show'
+  get '/search', to: 'searches#search', as: 'search'
 
    get '/login', to: 'users#login', as: 'login'
    post '/login', to: 'users#handle_login'
